@@ -1,0 +1,22 @@
+ /** heading styles */
+    /* Apply a pixel art font to the heading */
+    h1 {
+        font-family: 'Pixel', Arial, sans-serif;
+        font-size: 72px;
+    }
+    
+    
+    /* Create a pixel art effect for the heading text */
+    h1 {
+        color: #fff;
+        text-shadow: 1px 1px #000, 2px 2px #000, 3px 3px #000, 4px 4px #000, 5px 5px #000;
+    }
+    
+    /* Add a border to the heading container */
+    .heading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:100vw;
+    }
+  

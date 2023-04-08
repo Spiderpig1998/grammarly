@@ -1,0 +1,24 @@
+.send-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 8px 16px;
+    width: 15%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .send-button:hover {
+    background-color: #303030;
+  }
+  
+  .send-icon {
+    margin-left: 10px;
+    font-size: 20px;
+  }

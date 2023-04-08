@@ -1,0 +1,88 @@
+
+.parent-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/** Slate editor **/
+.slate-editor {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1c1c1c;
+    color: #e6e6e6;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+    margin: 50px auto;
+    margin-bottom: 20px !important;
+    width: 50%;
+  }
+  
+  .slate-editor h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+  
+  .slate-editor h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+  
+  .slate-editor p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .slate-editor ul,
+  .slate-editor ol {
+    margin: 0;
+    padding: 0;
+    margin-left: 30px;
+  }
+  
+  .slate-editor li {
+    margin: 5px 0;
+    line-height: 1.5;
+  }
+  
+  .slate-editor a {
+    color: #85bb65;
+  }
+  
+  .slate-editor strong {
+    font-weight: bold;
+  }
+  
+  .slate-editor em {
+    font-style: italic;
+  }
+  
+  .slate-editor code {
+    font-family: 'Source Code Pro', monospace;
+    background-color: #2d2d2d;
+    color: #d4d4d4;
+    padding: 2px;
+    border-radius: 5px;
+  }
+  
+  .slate-editor pre {
+    background-color: #2d2d2d;
+    color: #d4d4d4;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    font-family: 'Source Code Pro', monospace;
+  }
+
+  /** Button **/
+  .button-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 52%;
+  }
