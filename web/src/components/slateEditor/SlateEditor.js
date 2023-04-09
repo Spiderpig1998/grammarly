@@ -7,13 +7,7 @@ import { onKeyDown, renderLeaf, serialize, getTextInfo } from './utils/slateUtil
 //STYLES
 import styles from './styles/editorStyles.module.css'
 import SendButton from './components/SendButton'
-//CONSTANTS
-const initialValue = [
-    {
-        type: 'paragraph',
-        children: [{ text: 'A line of text in a paragraph.' }],
-    },
-]
+
 
 /**
  * @param {function} setValue - Sets the value of the editor
@@ -25,19 +19,19 @@ const onChangeHandler = (setValue, value) => {
     setValue(value);
 }
 
-const onClickHandler = async (value, setScoreMetrics, setSummary) => {
+const onClickHandler = async (value, setScoreMetrics, setSummary, setLoading) => {
     const serialized = serialize({ children: value });
+    setLoading(true);
     const textInfo = await getTextInfo(serialized);
+    setLoading(false);
     setScoreMetrics(textInfo.scoreCard);
     setSummary(textInfo.summary);
 }
 
 const SlateEditor = (props) => {
-    const { setScoreMetrics, setSummary } = props;
+    const { setScoreMetrics, setSummary, setLoading, value, setValue } = props;
     // Create a Slate editor object that won't change across renders.
     const editor = useMemo(() => withReact(createEditor()), [])
-    // Keep track of state for the value of the editor.
-    const [value, setValue] = useState(initialValue)
     // Render the Slate context.
     return (
         <>
@@ -52,7 +46,7 @@ const SlateEditor = (props) => {
             <div className={styles["button-div"]}>
                 <SendButton
                     heading="Send"
-                    onClick = {() => onClickHandler(value, setScoreMetrics, setSummary)}
+                    onClick = {() => onClickHandler(value, setScoreMetrics, setSummary, setLoading)}
                 />
             </div>
         </>

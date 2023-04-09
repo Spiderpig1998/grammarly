@@ -1,9 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 import ItsASecretLol from "../secrets";
-import {TEXT_SUMMARY_MOCK} from "../resources/resources";
+import { removeSpecialChars } from "../utils/stringUtils";
 const fetch = require('node-fetch');
 //bad practice
 const { API_SUMMARY} = ItsASecretLol;
+
+const formatSummary = (response: any) => {
+    const summary  = response.summary;
+    const cleanedSummary = summary.map( (str: string) =>  removeSpecialChars(str));
+    return {summary: cleanedSummary};
+}
 
 const getSummary = async (req: Request, res: Response, next: NextFunction) => {
     const { body } = req;
@@ -17,7 +23,7 @@ const getSummary = async (req: Request, res: Response, next: NextFunction) => {
         body: JSON.stringify(input)
     });
     const summary = await summaryResponse.json();
-    req.body.summary = summary.response;
+    req.body.summary = formatSummary(summary.response);
     next();
 }
 
