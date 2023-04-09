@@ -1,0 +1,60 @@
+.summaryCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 62%;
+    height: fit-content;
+    background-color: #1a1a1a;
+    padding-top: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .summaryCard-title {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .summaryCard-content {
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .summaryCard-item {
+      list-style-type: none !important;
+      background-color: #333333;
+      padding: 10px;
+      margin-top: 2%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      overflow-y: scroll;
+      width: 90%;
+      height: 30px;
+      transition: background-color 0.3s ease-in-out; /* optional transition effect */
+  }
+  
+  .summaryCard-item:hover {
+    background-color: #444444; /* or any other color you want to use */
+  }
+
+  .summaryCard-item-label {
+    font-size: 14px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    margin-top: 10px;
+  }
+  
+  .summaryCard-item-value {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+  }

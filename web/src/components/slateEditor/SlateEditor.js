@@ -1,8 +1,8 @@
 //IMPORTS
 import React, { useState, useMemo } from 'react'
-import { createEditor, Editor } from 'slate'
+import { createEditor } from 'slate'
 import { Slate, Editable, withReact } from 'slate-react'
-import { onKeyDown, renderLeaf } from './utils/slateUtils'
+import { onKeyDown, renderLeaf, serialize, getTextInfo } from './utils/slateUtils'
 
 //STYLES
 import styles from './styles/editorStyles.module.css'
@@ -21,23 +21,28 @@ const initialValue = [
  * @param {function} setCount - Sets the count of the editor
  * @param {object} editor - The editor object
  */
-const onChangeHandler = (setValue, value, setCount, editor) => {
-    const strLength = Editor.string(editor).length;
+const onChangeHandler = (setValue, value) => {
     setValue(value);
-    setCount(strLength);
 }
 
-const SlateEditor = () => {
+const onClickHandler = async (value, setScoreMetrics, setSummary) => {
+    const serialized = serialize({ children: value });
+    const textInfo = await getTextInfo(serialized);
+    setScoreMetrics(textInfo.scoreCard);
+    setSummary(textInfo.summary);
+}
+
+const SlateEditor = (props) => {
+    const { setScoreMetrics, setSummary } = props;
     // Create a Slate editor object that won't change across renders.
     const editor = useMemo(() => withReact(createEditor()), [])
     // Keep track of state for the value of the editor.
     const [value, setValue] = useState(initialValue)
-    const [count, setCount] = useState(0);
     // Render the Slate context.
     return (
-        <div className={styles['parent-div']}>
+        <>
             <div className={styles['slate-editor']}>
-                <Slate editor={editor} value={value} onChange={value => onChangeHandler(setValue, value, setCount, editor)}>
+                <Slate editor={editor} value={value} onChange={value => onChangeHandler(setValue, value)}>
                     <Editable
                         onKeyDown={event => onKeyDown(event, editor, () => { })}
                         renderLeaf={props => renderLeaf(props)}
@@ -47,10 +52,10 @@ const SlateEditor = () => {
             <div className={styles["button-div"]}>
                 <SendButton
                     heading="Send"
+                    onClick = {() => onClickHandler(value, setScoreMetrics, setSummary)}
                 />
             </div>
-        </div>
-
+        </>
 
 
     )

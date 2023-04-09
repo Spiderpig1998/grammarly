@@ -1,3 +1,8 @@
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: hwb(0 19% 81%);
@@ -7,6 +12,7 @@ body {
   .App {
     padding: 20px;
     width: max-content;
+    overflow-y: scroll;
   }
   
   .toolbar {
@@ -66,36 +72,14 @@ body {
   h2 {
     font-size: 24px;
   }
+
   
-  ul,
-  ol {
-    margin: 0 0 10px;
-    padding: 0 0 0 20px;
-  }
-  
-  li {
-    margin: 0;
-  }
-  
-  ul li::before {
-    content: '';
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #3f51b5;
-    margin-right: 10px;
-    vertical-align: middle;
-  }
-  
-  ol li {
-    counter-increment: item;
-  }
-  
-  ol li::before {
-    content: counter(item) '.';
-    font-weight: bold;
-    margin-right: 10px;
-  }
-    
  
+  .parent-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    
+}
