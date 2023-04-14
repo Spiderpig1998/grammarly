@@ -3,7 +3,7 @@ import { Transforms, Text, Editor } from "slate";
 import escapeHtml from 'escape-html'
 
 //CONSTANTS
-const FETCH_URL = 'http://localhost:8000/text-info'
+const FETCH_URL = 'http://localhost/text-info'
 //FUNCTIONS
 //updates all text nodes in the editor to have the given type
 const setTxtType = (editor, type) => {

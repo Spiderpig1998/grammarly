@@ -1,5 +1,7 @@
+import childrenStyles from './styles/summaryCard.module.css';
+import parentStyles from '../styles/card.module.css';
+
 import TextLists from "./components/TextLists";
-import styles from "./styles/summaryCard.module.css";
 
 
 const SummaryCard = (props) => {
@@ -10,8 +12,8 @@ const SummaryCard = (props) => {
 
     const summary = summaryInfo.summary;
     return (
-        <div className={styles['summaryCard']}>
-            <h2 className={styles["summaryCard-title"]}>Summary</h2>
+        <div className={`${childrenStyles['summarycard']} ${parentStyles['card']}`}>
+            <h2 className={`${parentStyles['card']}`}>Summary</h2>
             <TextLists
                 items={summary}
             />

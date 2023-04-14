@@ -1,10 +1,12 @@
-import styles from '../styles/scorecard.module.css'
+import childStyles from '../styles/scorecard.module.css'
+import parentStyles from '../../styles/card.module.css'
 import ScoreCardItem from './ScoreCardItem';
 
 const ScoreCardContent = (props) => {
+    console.log(parentStyles);
     const { scores } = props;
     return (
-        <div className={styles["scorecard-content"]}>
+        <div className={`${parentStyles['card-content']} ${childStyles['scorecard-content']}`}>
             {
                 scores.map((score) => {
                     return (

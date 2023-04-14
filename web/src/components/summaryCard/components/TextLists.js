@@ -1,4 +1,5 @@
-import styles from '../styles/summaryCard.module.css'
+import parentStyles from '../../styles/card.module.css';
+import childStyles from '../styles/summaryCard.module.css';
 
 
 const TextLists = (props) => {
@@ -6,14 +7,14 @@ const TextLists = (props) => {
 
     const renderedParagraphs = items.map((paragraph, index) => (
 
-        <li key={index} className={styles['summaryCard-item']}>
+        <li key={index} className={`${parentStyles['card-item']} ${childStyles['summarycard-item']}`}>
             {paragraph} 
         </li>
 
     ));
 
     return (
-        <div className={styles["summaryCard-content"]}>
+        <div className={`${parentStyles['card-content']} ${childStyles['summarycard-content']}`}>
             {renderedParagraphs}
         </div>
     );

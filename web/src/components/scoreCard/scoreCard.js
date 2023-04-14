@@ -1,5 +1,6 @@
 import ScoreCardContent from './components/ScoreCardContent';
-import styles from './styles/scorecard.module.css';
+import childStyles from './styles/scorecard.module.css';
+import parentStyles from '../styles/card.module.css';
 
 const ScoreCard = (props) => {
     const score = props.scoreMetrics;
@@ -11,8 +12,8 @@ const ScoreCard = (props) => {
     const scoreArr = Object.entries(score);
 
     return (
-        <div className={styles["scorecard"]}>
-            <h2 className={styles["scorecard-title"]}>Readability Information</h2>
+        <div className={`${parentStyles['card']} ${childStyles['scorecard']}`}>
+            <h2 className={parentStyles["card-title"]}>Readability Information</h2>
             <ScoreCardContent
                 scores={scoreArr}
             />

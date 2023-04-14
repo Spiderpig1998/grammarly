@@ -1,4 +1,5 @@
-import styles from '../styles/scorecard.module.css'
+import childStyles from '../styles/scorecard.module.css'
+import parentStyles from '../../styles/card.module.css'
 
 
 const formatText = (text) => {
@@ -11,9 +12,9 @@ const formatText = (text) => {
 const ScoreCardItem = (props) => {
     const { heading, content } = props;
     return (
-        <div className={styles["scorecard-item"]}>
-            <div className={styles["scorecard-item-value"]}>{formatText(heading)}</div>
-            <div className={styles["scorecard-item-label"]}>{content}</div>
+        <div className={`${parentStyles['card-item']} ${childStyles["scorecard-item"]}`}>
+            <div className={parentStyles["card-item-value"]}>{formatText(heading)}</div>
+            <div className={childStyles["card-item-label"]}>{content}</div>
         </div>
     )
 }

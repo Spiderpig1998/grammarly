@@ -52,7 +52,7 @@ const App = () => {
     }
     return (
         <div className={styles['app']}>
-            <MainHeading>Grammarly</MainHeading>
+            <MainHeading>Grammerly</MainHeading>
             {content}
         </div>
     )
