@@ -7,7 +7,6 @@ const { API_KEY, LANGUAGE } = ItsASecretLol;
 export const transformText = (req: Request, res: Response, next: NextFunction) => {
     const { body } = req;
     const text = body.input;
-    const cleanText = removeSpecialChars(text);
     const encodedText = utf8.encode(text);
     const transformedText = {
         text: encodedText,

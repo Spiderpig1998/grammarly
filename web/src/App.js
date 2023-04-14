@@ -6,6 +6,7 @@ import LoadingScreen from "./components/loading/LoadingScreen";
 //styles
 import styles from './styles/appStyles.module.css';
 import SummaryCard from "./components/summaryCard/SummaryCard";
+import ErrorScreen from "./components/error/ErrorScreen";
 //CONSTANTS
 const initialValue = [
     {
@@ -25,7 +26,7 @@ const App = () => {
     if (loading) {
         content = <LoadingScreen />;
     } else if (error) {
-        content = <p>Something went wrong</p>;
+        content = <ErrorScreen error={error}/>;
     } else {
         content = <>
             <div className={styles['parent-div']}>
@@ -35,6 +36,7 @@ const App = () => {
                     setSummary={setSummary}
                     setLoading={setLoading}
                     setValue = {setValue}
+                    setError = {setError}
                 />
             </div>
             <div className={styles['parent-div']}>

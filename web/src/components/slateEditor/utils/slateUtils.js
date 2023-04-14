@@ -3,7 +3,7 @@ import { Transforms, Text, Editor } from "slate";
 import escapeHtml from 'escape-html'
 
 //CONSTANTS
-const FETCH_URL = 'http://localhost/text-info'
+const FETCH_URL = 'http://localhost:8000/text-info'
 //FUNCTIONS
 //updates all text nodes in the editor to have the given type
 const setTxtType = (editor, type) => {
@@ -67,13 +67,23 @@ export const serialize = node => {
 
 //send to the backend
 export const getTextInfo = async (input) => {
-    const textScore = await fetch(FETCH_URL, {
+    const res = await fetch(FETCH_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ input: input })
     })
+    //if error, return error
+    if (res.status === 400) {
+        return {
+            error: true,
+            data: res.json()
+        }
+    }
 
-    return textScore.json()
+    return {
+        error: false,
+        data: res.json()
+    }
 }

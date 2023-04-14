@@ -19,17 +19,22 @@ const onChangeHandler = (setValue, value) => {
     setValue(value);
 }
 
-const onClickHandler = async (value, setScoreMetrics, setSummary, setLoading) => {
+const onClickHandler = async (value, setScoreMetrics, setSummary, setLoading, setError) => {
     const serialized = serialize({ children: value });
     setLoading(true);
-    const textInfo = await getTextInfo(serialized);
+    const result = await getTextInfo(serialized);
     setLoading(false);
+    if (result.error) {
+        setError(true);
+        return;
+    }
+    let textInfo = result.data;
     setScoreMetrics(textInfo.scoreCard);
     setSummary(textInfo.summary);
 }
 
 const SlateEditor = (props) => {
-    const { setScoreMetrics, setSummary, setLoading, value, setValue } = props;
+    const { setScoreMetrics, setSummary, setLoading, value, setValue, setError } = props;
     // Create a Slate editor object that won't change across renders.
     const editor = useMemo(() => withReact(createEditor()), [])
     // Render the Slate context.
@@ -46,7 +51,7 @@ const SlateEditor = (props) => {
             <div className={styles["button-div"]}>
                 <SendButton
                     heading="Send"
-                    onClick = {() => onClickHandler(value, setScoreMetrics, setSummary, setLoading)}
+                    onClick = {() => onClickHandler(value, setScoreMetrics, setSummary, setLoading, setError)}
                 />
             </div>
         </>

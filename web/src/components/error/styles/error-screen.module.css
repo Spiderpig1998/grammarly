@@ -1,0 +1,29 @@
+.error-container {
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .error-header {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .error-message {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .error-button {
+    background-color: #fff;
+    color: #222;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
