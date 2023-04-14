@@ -74,16 +74,17 @@ export const getTextInfo = async (input) => {
         },
         body: JSON.stringify({ input: input })
     })
+    const data = await res.json()
     //if error, return error
     if (res.status === 400) {
         return {
             error: true,
-            data: res.json()
+            data: data
         }
     }
 
     return {
         error: false,
-        data: res.json()
+        data: data
     }
 }
